@@ -24,6 +24,7 @@ export default class Board extends React.Component {
             />
         );
     }
+
     
     handleClick(index) {
         let squares = [...this.state.squares]
@@ -36,12 +37,16 @@ export default class Board extends React.Component {
     }
 
 	render() {
-        let status;
+        let status
+        const isTied = (squares=[]) => squares.every((square) => square !== null)
         const winner = calculateWinner(this.state.squares)
+        
         if (winner) {
             status = `Winner is: ${winner}`
+        } else if( isTied(this.state.squares) ) {
+            status = `Matched is Tied`;
         } else {
-            status = `Player is: ${this.state.isXNext? 'X' : 'O'}`
+            status = `Player is: ${this.state.isXNext? 'X' : 'O'}`;
         }
 
 		const board = (

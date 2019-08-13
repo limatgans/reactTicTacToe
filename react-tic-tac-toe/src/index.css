@@ -1,21 +1,39 @@
 body {
-    background-color: black;
-    color: #ffffff
+  background: black;
+  color: #ffffff;
+  font: 14px "Century Gothic", Futura, sans-serif;
+  margin: 20px;
+}
+
+ol, ul {
+  padding-left: 30px;
 }
 
 .board-row:after {
-    clear: both;
-    content: "";
-    display: table;
+  clear: both;
+  content: "";
+  display: table;
 }
 
+.status {
+  margin-bottom: 10px;
+}
 
 .square {
-    border: 0.02rem solid #fff;
-    width: 2rem;
-    background-color: black;
-    color: #ffffff;
-    height: 2rem;
+  border: 0.02rem solid #fff;
+  width: 2rem;
+  height: 2rem;
+  line-height: 2rem;
+  background: black;
+  color: #ffffff;
+  text-align: center;
+  padding: 0;
+
+  float: left;
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-right: -1px;
+  margin-top: -1px;
 }
 
 .square:focus {
