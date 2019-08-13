@@ -1,0 +1,36 @@
+body {
+    background-color: black;
+    color: #ffffff
+}
+
+.board-row:after {
+    clear: both;
+    content: "";
+    display: table;
+}
+
+
+.square {
+    border: 0.02rem solid #fff;
+    width: 2rem;
+    background-color: black;
+    color: #ffffff;
+    height: 2rem;
+}
+
+.square:focus {
+  outline: none;
+}
+
+.kbd-navigation .square:focus {
+  background: #ddd;
+}
+
+.game {
+  display: flex;
+  flex-direction: row;
+}
+
+.game-history {
+  margin-left: 2rem;
+}
