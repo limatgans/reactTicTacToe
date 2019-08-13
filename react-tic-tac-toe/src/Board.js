@@ -8,7 +8,8 @@ export default class Board extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            squares: Array(9).fill(null)
+            squares: Array(9).fill(null),
+            isXNext: true
         }
     }
     
@@ -23,30 +24,31 @@ export default class Board extends React.Component {
     
     handleClick(index) {
         let squares = [...this.state.squares]
-        squares[index] = 'X'
-        this.setState({squares})
+        squares[index] = this.state.isXNext? 'X' : 'O'
+        const isXNext = !this.state.isXNext
+        this.setState({squares, isXNext})
     }
 
 	render() {
-		const status = "Player is: X"
+		const status = `Player is: ${this.state.isXNext? 'X' : 'O'}`
 
 		const board = (
 			<div>
 				<div className = "status">{status}</div>
 				<div className = "board-row">
+                    {this.renderSquare(0)}
 					{this.renderSquare(1)}
 					{this.renderSquare(2)}
-					{this.renderSquare(3)}
 				</div>
 				<div className = "board-row">
+                    {this.renderSquare(3)}
 					{this.renderSquare(4)}
 					{this.renderSquare(5)}
-					{this.renderSquare(6)}
 				</div>
 				<div className = "board-row">
+                    {this.renderSquare(6)}
 					{this.renderSquare(7)}
 					{this.renderSquare(8)}
-					{this.renderSquare(9)}
 				</div>
 			</div>
 		)
