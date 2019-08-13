@@ -3,6 +3,9 @@ import React from 'react';
 // Importing Other Classses
 import Square from './Square.js'
 
+// Importing Utils
+import calculateWinner from './utils/calculateWinner'
+
 export default class Board extends React.Component {
     
     constructor(props) {
@@ -24,13 +27,22 @@ export default class Board extends React.Component {
     
     handleClick(index) {
         let squares = [...this.state.squares]
+        if (calculateWinner(squares) || squares[index]) {
+            return;
+        }
         squares[index] = this.state.isXNext? 'X' : 'O'
         const isXNext = !this.state.isXNext
         this.setState({squares, isXNext})
     }
 
 	render() {
-		const status = `Player is: ${this.state.isXNext? 'X' : 'O'}`
+        let status;
+        const winner = calculateWinner(this.state.squares)
+        if (winner) {
+            status = `Winner is: ${winner}`
+        } else {
+            status = `Player is: ${this.state.isXNext? 'X' : 'O'}`
+        }
 
 		const board = (
 			<div>
